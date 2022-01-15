@@ -48,11 +48,11 @@ export const TransactionsProvider = ({ children }: TransactionsProviderProps) =>
   },[]);
 
   const createTransaction = async(transactionItem: TransactionInput | TransactionInputPick) => {
-    const { data: { transaction } } = await api.post('/transactions', {
+    const response = await api.post('/transactions', {
       ...transactionItem,
       createdAt: new Date()
     });
-    setTransactions([...transactions, transaction]);
+    setTransactions([...transactions, response.data.transactions]);
   };
 
   return (
