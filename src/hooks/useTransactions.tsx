@@ -40,6 +40,7 @@ const TransactionsContext = createContext<TransactionsContextData>(
 export const TransactionsProvider = ({ children }: TransactionsProviderProps) => {
 
   const [transactions, setTransactions] = useState<Transaction[]>([]);
+  console.log(transactions);
 
   useEffect(() => {
     api.get('transactions').then(response => {

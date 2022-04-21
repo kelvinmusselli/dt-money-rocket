@@ -7,7 +7,7 @@ export function TransactionsTable () {
   const { transactions } = useTransactions();
 
   return (
-    <S.Container>
+    <S.Container data-testid='transaction-table'>
       <table>
         <thead>
           <tr>

@@ -42,7 +42,7 @@ export function Summary() {
   });
 
   return (
-    <S.Container>
+    <S.Container data-testid='summary'>
       <div>
         <header>
           <p>Entradas</p>
