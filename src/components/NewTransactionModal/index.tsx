@@ -38,7 +38,7 @@ export function NewTransactionModal ({ isOpen, onRequestClose }: NewTransactionM
     });
     clearAllFields();
     onRequestClose();
-  }
+  };
 
   return (
     <Modal
@@ -51,13 +51,14 @@ export function NewTransactionModal ({ isOpen, onRequestClose }: NewTransactionM
         <img src={closeImg} alt="fechar modal" />
       </button>
 
-      <S.Container onSubmit={handleCreateNewTransaction}>
+      <S.Container onSubmit={handleCreateNewTransaction} data-testid='submitForm'>
         <h2>Cadastrar transação</h2>
         <input
           type="text"
           placeholder='Título'
           value={title}
           onChange={e => setTitle(e.target.value)}
+          data-testid='titulo'
         />
 
         <input
@@ -65,6 +66,7 @@ export function NewTransactionModal ({ isOpen, onRequestClose }: NewTransactionM
           placeholder='Valor'
           value={amount}
           onChange={e => setAmount(Number(e.target.value))}
+          data-testid='valor'
         />
 
         <S.TransactionTypesContainer>
@@ -73,6 +75,7 @@ export function NewTransactionModal ({ isOpen, onRequestClose }: NewTransactionM
             type='button'
             onClick={() => setType('deposit')}
             activeColor='green'
+            data-testid='deposit'
             >
             <img src={incomeImg} alt="Entrada" />
             <span>Entrada</span>
@@ -83,6 +86,7 @@ export function NewTransactionModal ({ isOpen, onRequestClose }: NewTransactionM
             type='button'
             onClick={() => setType('withdraw')}
             activeColor='red'
+            data-testid='withdraw'
             >
             <img src={outcomeImg} alt="Saída" />
             <span>Saída</span>
