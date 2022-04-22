@@ -9,6 +9,7 @@ jest.mock('../../services/api');
 jest.mock('react-modal', () => ({ children }) => children);
 
 describe('<NewTransactionModal>', () => {
+
   const renderComponent = (props) => {
     const mockProps = {
       ...props,
@@ -25,6 +26,7 @@ describe('<NewTransactionModal>', () => {
     beforeEach(() => {
       jest.resetAllMocks();
       jest.clearAllMocks();
+
       api.get.mockImplementation(() => {
         return Promise.resolve({
           data: {
@@ -32,6 +34,7 @@ describe('<NewTransactionModal>', () => {
           }
         });
       });
+
       api.post.mockImplementation(() => {
         return Promise.resolve({
           data: {
@@ -47,6 +50,7 @@ describe('<NewTransactionModal>', () => {
         });
       });
     });
+
     it('Add new transaction deposit', async () => {
       renderComponent({ isOpen: true });
       await waitFor(() => {
@@ -70,9 +74,11 @@ describe('<NewTransactionModal>', () => {
   });
 
   describe('Transaction withdraw', () => {
+
     beforeEach(() => {
       jest.resetAllMocks();
       jest.clearAllMocks();
+
       api.get.mockImplementation(() => {
         return Promise.resolve({
           data: {
@@ -80,6 +86,7 @@ describe('<NewTransactionModal>', () => {
           }
         });
       });
+
       api.post.mockImplementation(() => {
         return Promise.resolve({
           data: {
@@ -95,7 +102,8 @@ describe('<NewTransactionModal>', () => {
         });
       });
     });
-    it('Add new transaction deposit', async () => {
+
+    it('Add new transaction withdraw', async () => {
       renderComponent({ isOpen: true });
       await waitFor(() => {
         expect(screen.getByText('Cadastrar transação')).toBeInTheDocument();
@@ -116,5 +124,4 @@ describe('<NewTransactionModal>', () => {
       });
     });
   });
-
 });
