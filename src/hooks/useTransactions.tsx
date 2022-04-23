@@ -1,3 +1,4 @@
+import { log } from 'console';
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 import { api } from '../services/api';
 
@@ -64,8 +65,5 @@ export const TransactionsProvider = ({ children }: TransactionsProviderProps) =>
 
 export function useTransactions () {
   const context = useContext(TransactionsContext);
-  if (!context) {
-    throw new Error('useTransactions must be used within a TransactionsProvider');
-  }
   return context;
 }
